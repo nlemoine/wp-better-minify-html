@@ -1,0 +1,47 @@
+{
+  "name": "hellonico/wp-better-minify-html",
+  "type": "wordpress-plugin",
+  "license": "GPL v3",
+  "description": "Minify HTML output.",
+  "homepage": "https://wordpress.org/plugins/wp-better-minify-html/",
+  "support": {
+    "issues": "https://github.com/nlemoine/wp-better-minify-html/issues",
+    "source": "https://github.com/nlemoine/wp-better-minify-html.git"
+  },
+  "authors": [
+    {
+      "name": "Nicolas Lemoine",
+      "email": "dev@helloni.co",
+      "homepage": "https://github.com/nlemoine"
+    }
+  ],
+  "keywords": [
+    "wordpress",
+    "minify",
+    "html",
+    "minify html",
+    "compress html"
+  ],
+  "prefer-stable": true,
+  "require": {
+    "php": "^5.4.0 || ^7.0",
+    "wyrihaximus/html-compress": "^1.2"
+  },
+  "require-dev": {
+    "wp-coding-standards/wpcs": "dev-develop",
+    "sebastian/phpcpd": "~2.0@dev"
+  },
+  "scripts": {
+    "lint": "vendor/bin/phpcs --standard=phpcs.xml",
+    "fix": "vendor/bin/phpcbf --standard=phpcs.xml",
+    "configure-phpcs": [
+      "if [ -f vendor/bin/phpcs ]; then \"vendor/bin/phpcs\" --config-set installed_paths vendor/wp-coding-standards/wpcs; fi",
+      "if [ -f vendor/bin/phpcs ]; then \"vendor/bin/phpcs\" --config-set colors 1; fi",
+      "if [ -f vendor/bin/phpcs ]; then \"vendor/bin/phpcs\" --config-set show_progress 0; fi",
+      "if [ -f vendor/bin/phpcs ]; then \"vendor/bin/phpcs\" --config-set report_width auto; fi",
+      "if [ -f vendor/bin/phpcs ]; then \"vendor/bin/phpcs\" --config-set encoding utf-8; fi"
+    ],
+    "post-install-cmd": "@configure-phpcs",
+    "post-update-cmd":  "@configure-phpcs"
+  }
+}
